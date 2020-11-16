@@ -7,4 +7,3 @@ class Project(models.Model): #We inherit Model class from model
     description = models.CharField(max_length=300) #max_length parameter will limit the maximum length of the text entered
     image = models.ImageField(upload_to='images/') #ImageField will let you upload images and will validate it and store it in the specified folder
     url = models.URLField(blank=True) #URLField will let you write URL
-    
