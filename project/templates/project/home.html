@@ -1,1 +1,28 @@
-<h1>Subhodeep Sarkar's Portfolio</h1>
+<h1>Subhodeep Sarkar's Portfolio</h1> 
+
+<!-- In Djnago's templating language { %%} is used whenever we
+need to implement some logic i.e anything that you don't want to display in the 
+html page and, {{ } } is used for all the things that you want in your html
+It has many similarities with Python, but both are not completely the same -->
+
+{% for project in projects %} <!-- This will start a for loop
+which will go through every Project object present in the projects list
+which has been passed through home() in views.py-->
+
+<!-- We cannot directly print the object and thus,
+we have to print out the individual attributes of the object-->
+<h2>{{ project.title }}</h2> 
+<h3>{{ project.description }}</h3>
+<!--The tag is pretty self explanatory, we are trying to display the image which is 
+contanined in the project object, however, if we just access it saying
+project.image then we would get the relative path and, thus, it won't show up.
+Since, we need the absolute path, we need the URL of the image and thus, we access
+the image using project.image.url-->
+<img src='{{ project.image.url }}' width='425em'>
+{% if project.url %} <!--We want the link to appear only if it exists -->
+<br> 
+<a href='{{ project.url }}'>Click the link</a>
+
+{% endif %} <!--This is how we end conditionals in Django templates -->
+
+{% endfor %} <!--This is how we end loop in Django templates -->
