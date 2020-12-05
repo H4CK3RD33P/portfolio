@@ -17,11 +17,13 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls.static import static #this function will add media url and root to urlpattern list
 from django.conf import settings #importing the settings.py configuration
-from project import views
+from project import views #importing the views for project app where the home() exists
+from django.urls import include #importing include() using which we can forward the traffic to urls.py of some other app and let it handle using its own views.py
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.home,name='home')
+    path('',views.home,name='home'), #when user gives the url with '/' at the end, it will pass it to home() in project/views.py
+    path('blog/', include('blog.urls')), #when user adds /blog/ to the url, it will be forwarded to blog/urls.py which will then handle the request
 ]
 
 urlpatterns+= static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT) 
