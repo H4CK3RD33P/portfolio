@@ -1,7 +1,10 @@
 <h1>Hello World!</h1>
 
 {% for blog in blogs %}
+<<<<<<< HEAD
 <!--referring to detail path with the id of the blog object-->
+=======
+>>>>>>> c2ac856636dc16733b2f832a2622e3fa5331b0e1
 <a href={% url 'detail' blog.id %}><h2>{{ blog.title }}</h2></a>
 <h4>{{ blog.date }}</h4>
 <p>{{ blog.description }}</p>
