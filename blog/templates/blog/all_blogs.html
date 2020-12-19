@@ -1,9 +1,21 @@
 <h1>Hello World!</h1>
+<!--blogs.count counts the number of blog object present in the 
+query set 'blogs' passed from all_blogs() in blog/views.py.
 
+blogs.count | pluralize -> We pass the output of blogs.count to plurlize built-in
+tag of Django templete. Pluralize will put an 's' if the count is >1 -->
+<h2> Subhodeep has written {{ blogs.count }} blog{{ blogs.count | pluralize }} </h2>
 {% for blog in blogs %}
 <!--referring to detail path with the id of the blog object-->
 <a href={% url 'blog:detail' blog.id %}><h2>{{ blog.title }}</h2></a>
-<h4>{{ blog.date }}</h4>
-<p>{{ blog.description }}</p>
+<!--date: 'l, jS F, Y; fA'-> We want the datetime to be displayed in a specific format.
+it means Weekday, 1-31st/nd/rd Monthname, Year; 12hrtimeAM/PM
+upper means, we want the whole thing to be in uppercase-->
+<h5>{{ blog.date | date:'l, jS F, Y; fA' |  upper }}</h5>
+<!--We want the visibility of the description to 100 characters only and ellipes
+indicating it has more... thus we use truncatechars:100
+We can use html tags in the textfield and this would cause the template to show
+all the tags as rawstring,thus we use striptags to remove all html tags-->
+<p>{{ blog.description | truncatechars:100 | striptags }}</p>
 
 {% endfor %}
