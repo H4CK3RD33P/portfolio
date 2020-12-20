@@ -1,3 +1,10 @@
+{% extends 'project/base.html' %} <!--importing the base template-->
+
+{% block title %}
+<title>Blog</title>
+{% endblock %}
+
+{% block code %}
 <h1>Hello World!</h1>
 <!--blogs.count counts the number of blog object present in the 
 query set 'blogs' passed from all_blogs() in blog/views.py.
@@ -19,3 +26,5 @@ all the tags as rawstring,thus we use striptags to remove all html tags-->
 <p>{{ blog.description | truncatechars:100 | striptags }}</p>
 
 {% endfor %}
+
+{% endblock %}

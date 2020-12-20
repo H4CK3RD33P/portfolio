@@ -1,4 +1,12 @@
+{% extends 'project/base.html' %} <!--importing the base template-->
+{% block title %}
+<title>{{ blog.title }}</title>
+{% endblock %}
+{% block code %}
+
 <h1>{{ blog.title }}</h1>
 <h3>{{ blog.date | date:'l, jS F, Y; fA' }}</h3>
 <!--safe -> this will enable all the html tags in the description-->
 {{ blog.description | safe  }}
+
+{% endblock %}
