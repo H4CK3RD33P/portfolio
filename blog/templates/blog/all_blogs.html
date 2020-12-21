@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block code %}
-<h1>Hello World!</h1>
+<h1 style="text-align:center">Blogs</h1>
 <!--blogs.count counts the number of blog object present in the 
 query set 'blogs' passed from all_blogs() in blog/views.py.
 
@@ -13,6 +13,7 @@ blogs.count | pluralize -> We pass the output of blogs.count to plurlize built-i
 tag of Django templete. Pluralize will put an 's' if the count is >1 -->
 <h2> Subhodeep has written {{ blogs.count }} blog{{ blogs.count | pluralize }} </h2>
 {% for blog in blogs %}
+<div style="border: 5px solid black; border-radius: 12px; padding: 10px; margin: 5px 10px"; >
 <!--referring to detail path with the id of the blog object-->
 <a href={% url 'blog:detail' blog.id %}><h2>{{ blog.title }}</h2></a>
 <!--date: 'l, jS F, Y; fA'-> We want the datetime to be displayed in a specific format.
@@ -24,7 +25,7 @@ indicating it has more... thus we use truncatechars:100
 We can use html tags in the textfield and this would cause the template to show
 all the tags as rawstring,thus we use striptags to remove all html tags-->
 <p>{{ blog.description | truncatechars:100 | striptags }}</p>
-
+</div>
 {% endfor %}
 
 {% endblock %}

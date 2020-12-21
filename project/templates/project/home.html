@@ -4,12 +4,12 @@
 <title>Subhodeep Sarkar</title>
 {% endblock %}
 {% block code %}
-<h1>Subhodeep Sarkar's Portfolio</h1> 
+<h1 style="text-align: center;">Subhodeep Sarkar's Portfolio</h1> 
 
 {% load static %} <!-- You must write this to load static files-->
 <br>
-<img src={% static 'images/subhodeep.png'%} width=200px>
-<h1>This is Subhodeep Sarkar.</h1>
+<img src={% static 'images/subhodeep.png'%} width=200px style="margin-left: auto; margin-right: auto; display:block;">
+<h1 style="margin-left: 10px">Projects</h1>
 
 <!-- In Djnago's templating language { %%} is used whenever we
 need to implement some logic i.e anything that you don't want to display in the 
@@ -22,20 +22,21 @@ which has been passed through home() in views.py-->
 
 <!-- We cannot directly print the object and thus,
 we have to print out the individual attributes of the object-->
-<h2>{{ project.title }}</h2> 
-<h3>{{ project.description }}</h3>
+<div style="border: 5px solid black; border-radius: 12px; padding: 10px; margin: 5px 10px"; >
+<h3>{{ project.title }}</h3> 
 <!--The tag is pretty self explanatory, we are trying to display the image which is 
 contanined in the project object, however, if we just access it saying
 project.image then we would get the relative path and, thus, it won't show up.
 Since, we need the absolute path, we need the URL of the image and thus, we access
 the image using project.image.url-->
-<img src='{{ project.image.url }}' width='425em'>
+<img src='{{ project.image.url }}' width='180em' style='float:left'>
+<p style="margin-left: 10px; padding-left: 10px">{{ project.description }}</p>
 {% if project.url %} <!--We want the link to appear only if it exists -->
 <br> 
 <a href='{{ project.url }}'>Click the link</a>
 
 {% endif %} <!--This is how we end conditionals in Django templates -->
-
+</div>
 {% endfor %} <!--This is how we end loop in Django templates -->
 
 {% endblock %}

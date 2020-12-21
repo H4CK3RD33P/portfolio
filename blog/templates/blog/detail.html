@@ -1,12 +1,17 @@
 {% extends 'project/base.html' %} <!--importing the base template-->
 {% block title %}
 <title>{{ blog.title }}</title>
+<style>
+*{
+    text-align:center;
+}
+</style>
 {% endblock %}
 {% block code %}
 
-<h1>{{ blog.title }}</h1>
-<h3>{{ blog.date | date:'l, jS F, Y; fA' }}</h3>
+<h1><b>{{ blog.title }}</b></h1>
+<h6><i>{{ blog.date | date:'l, jS F, Y; fA' }}</i></h6>
 <!--safe -> this will enable all the html tags in the description-->
-{{ blog.description | safe  }}
+<p style="margin: 50px 50px">{{ blog.description | safe  }}</p>
 
 {% endblock %}

@@ -4,7 +4,7 @@ from django.db import models
 # Create your models here.
 class Project(models.Model): #We inherit Model class from model
     title = models.CharField(max_length=200) #CharField class will provide a Java like TextField in the admin panel
-    description = models.CharField(max_length=300) #max_length parameter will limit the maximum length of the text entered
+    description = models.TextField() #max_length parameter will limit the maximum length of the text entered
     image = models.ImageField(upload_to='images/') #ImageField will let you upload images and will validate it and store it in the specified folder
     url = models.URLField(blank=True) #URLField will let you write URL
 
