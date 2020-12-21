@@ -1,5 +1,4 @@
 portfolio/__pycache__/*
-db.sqlite3
 blog/__pycache__/*
 blog/migrations/__pycache__/*
 project/__pycache__/*
